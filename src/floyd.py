@@ -5,7 +5,8 @@ import itertools
 
 MAX_LENGTH = 4
 
-def floyd(distance):
+
+def Floyd(distance):
     for intermediate, start_node, end_node \
             in itertools.product(range(MAX_LENGTH), range(MAX_LENGTH), range(MAX_LENGTH)):
         if start_node == end_node:
