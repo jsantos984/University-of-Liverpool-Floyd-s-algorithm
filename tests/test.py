@@ -1,6 +1,4 @@
-import unittest
-import floyd
-import sys
+from src import floyd
 
 NO_PATH = 12
 graph = [[0, 7, NO_PATH, 8],
