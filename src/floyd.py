@@ -6,7 +6,7 @@ import itertools
 MAX_LENGTH = 4
 
 
-def Floyd(distance):
+def floyd(distance):
     for intermediate, start_node, end_node \
             in itertools.product(range(MAX_LENGTH), range(MAX_LENGTH), range(MAX_LENGTH)):
         if start_node == end_node:
@@ -16,6 +16,7 @@ def Floyd(distance):
                                                  distance[start_node][intermediate] + distance[intermediate][end_node]
                                                  )
     return distance
+
 
 
 
