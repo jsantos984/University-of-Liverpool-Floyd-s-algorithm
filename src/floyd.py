@@ -4,6 +4,7 @@ import itertools
 
 
 MAX_LENGTH = 4
+print(MAX_LENGTH)
 
 
 def floyd(distance):
