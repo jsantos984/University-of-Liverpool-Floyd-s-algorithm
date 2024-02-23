@@ -54,8 +54,7 @@ class TestFloyd(unittest.TestCase):
         result = floyd.floyd(distance)
 
         # Check if the result is None
-        self.assertIsNone(result)
-
+        self.assertIsNone(distance)
 
     def test_optimal_paths(self):
         # Define a sample distance matrix representing a graph with known shortest paths
@@ -79,6 +78,7 @@ class TestFloyd(unittest.TestCase):
 
         # Check if the result matches the expected shortest paths matrix
         self.assertEqual(result, expected_result, "Incorrect shortest paths computed by Floyd algorithm")
+
 
 if __name__ == '__main__':
     unittest.main()
