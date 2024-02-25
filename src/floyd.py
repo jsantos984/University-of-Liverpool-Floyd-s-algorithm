@@ -32,7 +32,18 @@ def floyd(sub_distance):
         for i in range(MAX_LENGTH):
             for j in range(MAX_LENGTH):
                 sub_distance = floyd_recursive(sub_distance, k, i, j)
+                # Check for negative cycles after each iteration of k
+                if has_negative_cycle(sub_distance):
+                    return None
     return sub_distance
+
+
+def has_negative_cycle(distance):
+    # Check if any diagonal element is negative, indicating a negative cycle
+    for i in range(MAX_LENGTH):
+        if distance[i][i] < 0:
+            return True
+    return False
 
 
 # Define a sample distance matrix
@@ -45,6 +56,10 @@ distance = [
 
 # Run the Floyd algorithm and print the result
 result = floyd(distance)
+# Check for negative cycles
+if has_negative_cycle(result):
+    print("Negative cycle detected. Result set to None.")
+    result = None
 print("Result after running Floyd algorithm:")
 for row in result:
     print(row)

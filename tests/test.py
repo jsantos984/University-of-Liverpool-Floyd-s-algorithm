@@ -50,8 +50,11 @@ class TestFloyd(unittest.TestCase):
         # Since there is a negative cycle, result should be None
         expected_result = None
 
+        # Run the Floyd algorithm
+        result = floyd.floyd(distance)
+
         # Check if the result is None
-        self.assertIsNone(distance)
+        self.assertIsNone(result)
 
     def test_optimal_paths(self):
         # Define a sample distance matrix representing a graph with known short paths
