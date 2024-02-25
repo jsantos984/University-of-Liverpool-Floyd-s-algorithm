@@ -4,22 +4,35 @@ import itertools
 
 
 MAX_LENGTH = 4
-#print(MAX_LENGTH)
 
 
-def floyd(distance):
-    for intermediate, start_node, end_node \
-            in itertools.product(range(MAX_LENGTH), range(MAX_LENGTH), range(MAX_LENGTH)):
-        if start_node == end_node:
-            distance[start_node][end_node] = 0
-        else:
-            distance[start_node][end_node] = min(distance[start_node][end_node],
-                                                 distance[start_node][intermediate] + distance[intermediate][end_node]
-                                                 )
-#        check negative cycles
-        if start_node == end_node and distance[start_node][end_node] < 0:
-            return None
-    return distance
+def floyd_recursive(sub_distance, k, i, j):
+    # Base case: If the current value of distance[i][j] is greater than the distance from i to k plus k to j,
+    # update distance[i][j] to the sum of these distances.
+    if sub_distance[i][j] > sub_distance[i][k] + sub_distance[k][j]:
+        sub_distance[i][j] = sub_distance[i][k] + sub_distance[k][j]
+
+    if k == MAX_LENGTH - 1:
+        return sub_distance
+
+        # Check if we have iterated over all vertices
+    if i == MAX_LENGTH - 1 and j == MAX_LENGTH - 1:
+        return sub_distance
+
+        # Recursive case
+    if j == MAX_LENGTH - 1:
+        return floyd_recursive(sub_distance, k + 1, i + 1, 0)
+    else:
+        return floyd_recursive(sub_distance, k, i, j + 1)
+
+
+def floyd(sub_distance):
+    # Iterate over all pairs of vertices (i, j) and call floyd_recursive to update the shortest path distances.
+    for k in range(MAX_LENGTH):
+        for i in range(MAX_LENGTH):
+            for j in range(MAX_LENGTH):
+                sub_distance = floyd_recursive(sub_distance, k, i, j)
+    return sub_distance
 
 
 # Define a sample distance matrix
