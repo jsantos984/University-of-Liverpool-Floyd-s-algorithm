@@ -23,8 +23,14 @@ In order to guarantee the corrct implementation, follow the next steps.
         python test.py
 2. See the results. After running the tests , see the output to guarantee all tests passed successfully.
 
+## Program requirements:
+- Install PyCharm;
+- Install Python.
+
 ## Contributors
 Joao Pedro Santos
+
+
    
 
 
